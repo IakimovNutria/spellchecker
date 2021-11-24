@@ -2,8 +2,8 @@ import json
 import re
 
 
-data_file_name = 'most_common_words.txt'
-text_file_name = 'text.txt'
+data_file_name = 'most_common_words/most_common_words.txt'
+text_file_name = 'most_common_words/text.txt'
 
 
 def save_data(data):

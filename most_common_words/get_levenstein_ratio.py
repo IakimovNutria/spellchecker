@@ -1,6 +1,6 @@
 from fuzzywuzzy import process
 from fuzzywuzzy import fuzz
-from get_most_common_words import get_most_common_words, get_most_common_words_dict
+from utils import get_most_common_words, get_most_common_words_dict
 
 
 percent = 80
