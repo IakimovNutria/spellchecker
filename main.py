@@ -15,8 +15,10 @@ most_common_words_set = set(most_common_words_list)
 if word not in most_common_words_set:
     for common_word in most_common_words_list:
         if fuzz.ratio(word, common_word) >= percent:
-            print(common_word)
+            print('Word invalid, correct word', common_word)
             break
+else:
+    print('Word valid')
 
 
 
