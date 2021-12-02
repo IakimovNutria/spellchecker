@@ -1,7 +1,7 @@
 import json
 import re
-import colorama
 
+import colorama
 
 data_file_name = 'most_common_words/most_common_words.txt'
 text_file_name = 'most_common_words/text.txt'
@@ -32,8 +32,10 @@ def update_most_common_words_dict():
             word = word.lower()
             word = re.sub(r'[^\w\s]', '', word)
             if is_cyrillic(word):
-                most_common_words_dict[word] = most_common_words_dict.get(word, 0) + 1
-    save_data(dict(sorted(most_common_words_dict.items(), key=lambda x: x[1])[::-1]))
+                most_common_words_dict[word] =\
+                    most_common_words_dict.get(word,0) + 1
+    save_data(
+        dict(sorted(most_common_words_dict.items(), key=lambda x: x[1])[::-1]))
 
 
 def is_cyrillic(text):
