@@ -1,5 +1,6 @@
 import json
 import re
+import colorama
 
 
 data_file_name = 'most_common_words/most_common_words.txt'
@@ -39,3 +40,15 @@ def is_cyrillic(text):
     return bool(re.search('^[а-яА-Я]+$', text))
 
 
+def get_colored_diff(original, correct):
+    result = ''
+    for i in range(len(correct)):
+        if i >= len(original):
+            result += colorama.Fore.GREEN + correct[i]
+            continue
+        if original[i] == correct[i]:
+            result += colorama.Fore.RESET + correct[i]
+        else:
+            result += colorama.Fore.YELLOW + correct[i]
+    result += colorama.Fore.RESET
+    return result
