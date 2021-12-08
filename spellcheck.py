@@ -31,7 +31,7 @@ def check_word(word):
     if args.regex:
         import re
         try:
-            print(re.sub(args.regex[0], args.regex[1], word), end=' ')
+            print(re.sub(args.regex[0], args.regex[1], word), end=' ', file=output)
         except re.error:
             print("Regex pattern error")
             exit(0)
@@ -66,13 +66,13 @@ output = None
 if args.output:
     output = open(args.output, 'w')
 if args.input:
-    with open(args.input, 'r') as (f, err):
-        if err:
-            print(f"Input file reading error: {err}")
-            exit(0)
-        for line in f:
-            for word in line.split():
-                check_word(word)
+    try:
+        with open(args.input, 'r') as f:
+            for line in f:
+                for word in line.split():
+                    check_word(word)
+    except OSError as err:
+        print(f"Input file error: {err}")
 for word in sentence:
     check_word(word)
 if output:
